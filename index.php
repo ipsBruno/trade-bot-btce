@@ -55,9 +55,9 @@ if(isset($_GET["c"]))
 	{
 		$oid = $_GET["c"];	
 		
-		die("Aguardando fechamento da ordem de venda .. <script>setTimeout(function(){location.href='index.php?c=".$oid."';},5000);</script>");
+		die("Aguardando fechamento da ordem de venda .. <script>setTimeout(function(){location.href='".$_SERVER['PHP_SELF']."?c=".$oid."';},5000);</script>");
 	}
-	die("Ordem fechada com sucesso, criando ordem pra compra .. <script>setTimeout(function(){location.href='index.php';},5000);</script>");
+	die("Ordem fechada com sucesso, criando ordem pra compra .. <script>setTimeout(function(){location.href='".$_SERVER['PHP_SELF']."';},5000);</script>");
 }
 
 
@@ -155,7 +155,7 @@ if($oid == 0) RefazerTrade("<br/>[ERRO] Ocorreu um erro ao criar as ordens!") ;
 
 
 # Finalizar, checando periodicamente se a segunda ordem foi fechada tambem
-die("<script>setTimeout(function(){location.href='index.php?c=".$oid."';},5000);</script>");
+die("<script>setTimeout(function(){location.href='".$_SERVER['PHP_SELF']."?c=".$oid."';},5000);</script>");
 
 
  
