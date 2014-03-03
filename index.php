@@ -1,5 +1,4 @@
 
-
 <?php
 
 /*
@@ -101,8 +100,8 @@ recalcular:
 $lucro = $max - $min;
 $prejuizo =    ($max * $fee / 100) + ($min * $fee / 100) ;                                                                       ;
 if($lucro < $prejuizo)  {
-	$max += 0.25;
-	$min -= 0.25;
+	$max += 0.50;
+	$min -= 0.50;
 	goto recalcular;
 }
 
