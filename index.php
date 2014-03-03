@@ -23,8 +23,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 
 # Configurações de API, coloque suas cháves aqui
-$api = 'X5MAWZR0-VZ4TS4NO-IHLDRZH9-KCEOOS2O-ILS4FEMS';
-$key = '3c7b47ec250b6826503bd4fb32ce815d7a24454549c2c70a2286d4827128a80e69';
+$api = '';
+$key = '';
 
 
 # Fazer autenticaçíoo no BTC-E
@@ -39,14 +39,14 @@ $servidor = array();
 
 # Valor de USD para fazer Trade! 
 # Lembrando que este valor, precisa estar disponí­vel no BTC-e
-$tradeusd = 10;
+$tradeusd = 8;
 
 # Esse é o valor de imposto cobrado a cada transaçío na exchange, em porcentagem
-$fee = 0.35;
+$fee = 0.4;
 
 
 # Tempo para comprar máximo ordem (em minutos)
-$tempo = 18;
+$tempo = 20;
 
 
 # Checar se há ordem pra venda aberta
@@ -101,16 +101,18 @@ recalcular:
 $lucro = $max - $min;
 $prejuizo =    ($max * $fee / 100) + ($min * $fee / 100) ;                                                                       ;
 if($lucro < $prejuizo)  {
-	$max += 0.1;
-	$min -= 0.1;
+	$max += 0.25;
+	$min -= 0.25;
 	goto recalcular;
 }
 
-echo "[ALGORÍTIMO PARA PROCURA DE LUCRO]<br/> Estimativa de lucro <b>".$lucro."$</b><br/>Estimativa de prejuizo:<b>".$prejuizo."$</b><br/>Valor de compra: <b>{$min}$</b><br/>Valor de venda:<b>{$max}$</b><br/><br/>";
+echo "[ALGORÍTIMO PARA PROCURA DE LUCRO]<br/> Estimativa de lucro <b>".$lucro."$</b><br/>Estimativa de prejuizo:<b>".$prejuizo."$</b><br/>Valor de compra: <b>
+
+{$min}$</b><br/>Valor de venda:<b>{$max}$</b><br/><br/>";
 
 
 # Calcular valor do BTC a ser comprado
-$comprarbtc =  round(GetBitcoinAmmount($tradeusd, $min), 3);
+$comprarbtc =  round(GetBitcoinAmmount($tradeusd, $min), 4);
 
 # Abrir ordem para compra de BTCs!
 $oid = @ComprarBitcoins( $min, $comprarbtc );
@@ -180,7 +182,15 @@ function GetBitcoinAmmount($dolares, $value) {
 function force_flush() {
     echo "\n\n<!-- Deal with browser-related buffering by sending some incompressible strings -->\n\n";
     for ( $i = 0; $i < 5; $i++ )
-        echo "<!-- abcdefghijklmnopqrstuvwxyz1234567890aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz11223344556677889900abacbcbdcdcededfefegfgfhghgihihjijikjkjlklkmlmlnmnmononpopoqpqprqrqsrsrtstsubcbcdcdedefefgfabcadefbghicjkldmnoepqrfstugvwxhyz1i234j567k890laabmbccnddeoeffpgghqhiirjjksklltmmnunoovppqwqrrxsstytuuzvvw0wxx1yyz2z113223434455666777889890091abc2def3ghi4jkl5mno6pqr7stu8vwx9yz11aab2bcc3dd4ee5ff6gg7hh8ii9j0jk1kl2lmm3nnoo4p5pq6qrr7ss8tt9uuvv0wwx1x2yyzz13aba4cbcb5dcdc6dedfef8egf9gfh0ghg1ihi2hji3jik4jkj5lkl6kml7mln8mnm9ono -->\n\n";
+        echo "<!-- 
+
+abcdefghijklmnopqrstuvwxyz1234567890aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz11223344556677889900abacbcbdcdcededfefegfgfhghgihihjijikjkjlklkmlmlnmnmononpopo
+
+qpqprqrqsrsrtstsubcbcdcdedefefgfabcadefbghicjkldmnoepqrfstugvwxhyz1i234j567k890laabmbccnddeoeffpgghqhiirjjksklltmmnunoovppqwqrrxsstytuuzvvw0wxx1yyz2z113223434455666777
+
+889890091abc2def3ghi4jkl5mno6pqr7stu8vwx9yz11aab2bcc3dd4ee5ff6gg7hh8ii9j0jk1kl2lmm3nnoo4p5pq6qrr7ss8tt9uuvv0wwx1x2yyzz13aba4cbcb5dcdc6dedfef8egf9gfh0ghg1ihi2hji3jik4jk
+
+j5lkl6kml7mln8mnm9ono -->\n\n";
     while ( ob_get_level() )
         ob_end_flush();
     @ob_flush();
@@ -194,7 +204,7 @@ function VenderBitcoins($valorbtc, $quantosbtc) {
 	
 	try {
 		echo "[VENDA] Ordem Criada: $quantosbtc btc. Cotaçío: $valorbtc<br/>";
-		$r = $BTCeAPI->makeOrder( round($quantosbtc,2) , 'btc_usd', BTCeAPI::DIRECTION_SELL, round($valorbtc,2));
+		$r = $BTCeAPI->makeOrder( round($quantosbtc,3) , 'btc_usd', BTCeAPI::DIRECTION_SELL, round($valorbtc,3));
 					
 		return $r["return"]["order_id"];		
 		
@@ -216,8 +226,8 @@ function ComprarBitcoins($valorbtc, $quantosbtc) {
 	
 	
 	try {
-		echo "[COMPRA] Ordem Criada: $quantosbtc btc. Cotaçío: $valorbtc<br/>";	
-		$r = $BTCeAPI->makeOrder( round($quantosbtc,2) , 'btc_usd', BTCeAPI::DIRECTION_BUY, round($valorbtc,2));
+		echo "[COMPRA] Ordem Criada: $quantosbtc btc. Cotação: $valorbtc<br/>";	
+		$r = $BTCeAPI->makeOrder( round($quantosbtc,3) , 'btc_usd', BTCeAPI::DIRECTION_BUY, round($valorbtc,3));
 			
 		return $r["return"]["order_id"];
 		
