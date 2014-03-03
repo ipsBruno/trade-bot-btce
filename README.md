@@ -25,12 +25,12 @@ Neste sistema, há algumas variáveis para alterar durante o uso do aplicativo, 
 
 $tradeusd
 
-Esta variável, predefinida para 10. Representa quantos reais inicias devem ser feitos para compra de cada Bitcoin. Lembrando que você precisa ter esse valor na carteira!
+Esta variável, predefinida para 10. Representa quantos dólares inicias devem ser feitos para compra de Bitcoin. Lembrando que você precisa ter esse valor na carteira!
 
 
 $fee
 
-Esta, é o valor médio cobrado pela exchange em cada transação. Quanto maior for este valor, mais lucro o programa vai visar. Porém com valores muito altos, a taxa de sucesos na conclusao das ordens é menor. 
+Esta, é o valor médio cobrado pela exchange em cada transação. Quanto maior for este valor, mais lucro o programa vai visar. Porém com valores muito altos, a taxa de sucesso na conclusao das ordens é menor. No caso do btc-e é cobrado 0.2% de fee.
 
 
 $tempo
