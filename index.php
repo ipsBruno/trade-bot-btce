@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -6,7 +5,8 @@
  # Bitcoin Trade. BTC-E Bot
  # Por Bruno da Silva - ipsBruno
  # down2money.net mixmusicas.com.br
- # email@brunodasilvacom
+ # email@brunodasilva.com
+ # github.com/ipsBruno/trade-bot-btce
  
 */
 
