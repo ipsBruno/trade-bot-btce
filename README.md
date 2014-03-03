@@ -1,4 +1,4 @@
-Bicoin Trade BOT (btc-e)
+Bitcoin Trade BOT (btc-e)
 ==============
 
 Um simples bot para trades no BTC-E!
