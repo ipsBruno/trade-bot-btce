@@ -1,4 +1,4 @@
-trade-bot-btce
+Bicoin Trade BOT (btc-e)
 ==============
 
 Um simples bot para trades no BTC-E!
@@ -13,6 +13,8 @@ Uso:
 Para utilizar este bot, você precisa alterar as chaves de $api e $key para a chave cedida no btc-e
 
 https://btc-e.com/profile#api_keys
+
+Obs: Não esqueça de liberar as permissões marcando as caixas INFO e TRADE
 
 
 Alteração:
