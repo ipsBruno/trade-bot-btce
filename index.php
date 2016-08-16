@@ -4,8 +4,6 @@
 
  # Bitcoin Trade. BTC-E Bot
  # Por Bruno da Silva - ipsBruno
- # acervodemusicas.com
-
 
  # email@brunodasilva.com
  # github.com/ipsBruno/trade-bot-btce
